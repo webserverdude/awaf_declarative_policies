@@ -62,7 +62,7 @@
              "mandatoryBody" : false,
              "method" : "*",
              "methodsOverrideOnUrlCheck" : false,
-             "name" : "/",
+             "name" : "/graphql",
              "performStaging" : false,
              "protocol" : "https",
              "type" : "explicit",
