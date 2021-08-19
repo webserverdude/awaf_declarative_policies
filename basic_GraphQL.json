@@ -60,7 +60,7 @@
              },
              "isAllowed" : true,
              "mandatoryBody" : false,
-             "method" : "*",
+             "method" : "POST",
              "methodsOverrideOnUrlCheck" : false,
              "name" : "/graphql",
              "performStaging" : false,
@@ -70,6 +70,7 @@
                 {
                    "contentProfile" : {
                       "name" : "graphql_profile"
+
                    },
                    "headerName" : "*",
                    "headerOrder" : "default",
