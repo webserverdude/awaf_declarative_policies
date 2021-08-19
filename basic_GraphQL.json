@@ -30,7 +30,7 @@
           {
              "attackSignaturesCheck" : true,
              "defenseAttributes" : {
-                "allowIntrospectionQueries" : true,
+                "allowIntrospectionQueries" : false,
                 "maximumBatchedQueries" : 10,
                 "maximumStructureDepth" : 10,
                 "maximumTotalLength" : 100000,
