@@ -1,0 +1,269 @@
+{
+   "policy" : {
+      "applicationLanguage" : "utf-8",
+      "brute-force-attack-preventions" : [
+         {
+            "captchaBypassCriteria" : {
+               "action" : "alarm-and-drop",
+               "enabled" : true,
+               "threshold" : 5
+            },
+            "clientSideIntegrityBypassCriteria" : {
+               "action" : "alarm-and-captcha",
+               "enabled" : true,
+               "threshold" : 3
+            },
+            "detectionCriteria" : {
+               "action" : "alarm-and-captcha",
+               "credentialsStuffingMatchesReached" : 100,
+               "detectCredentialsStuffingAttack" : true,
+               "detectDistributedBruteForceAttack" : true,
+               "failedLoginAttemptsRateReached" : 100
+            },
+            "leakedCredentialsCriteria" : {
+               "action" : "alarm-and-blocking-page",
+               "enabled" : false
+            },
+            "loginAttemptsFromTheSameDeviceId" : {
+               "action" : "alarm-and-honeypot-page",
+               "enabled" : true,
+               "threshold" : 3
+            },
+            "loginAttemptsFromTheSameIp" : {
+               "action" : "alarm-and-honeypot-page",
+               "enabled" : true,
+               "threshold" : 20
+            },
+            "loginAttemptsFromTheSameUser" : {
+               "action" : "alarm-and-captcha",
+               "enabled" : true,
+               "threshold" : 3
+            },
+            "measurementPeriod" : 900,
+            "preventionDuration" : "3600",
+            "reEnableLoginAfter" : 180,
+            "sourceBasedProtectionDetectionPeriod" : 60,
+            "url" : {
+               "method" : "*",
+               "name" : "/registrations",
+               "protocol" : "https",
+               "type" : "explicit"
+            }
+         }
+      ],
+      "caseInsensitive" : false,
+      "description" : "Rapid Deployment Policy",
+      "enablePassiveMode" : false,
+      "enforcementMode" : "blocking",
+      "fullPath" : "/Common/security_registration",
+      "filetypes" : [
+         {
+            "allowed" : true,
+            "checkPostDataLength" : true,
+            "checkQueryStringLength" : true,
+            "checkRequestLength" : true,
+            "checkUrlLength" : true,
+            "name" : "no_ext",
+            "performStaging" : true,
+            "postDataLength" : 1000,
+            "queryStringLength" : 1000,
+            "requestLength" : 5000,
+            "responseCheck" : false,
+            "type" : "explicit",
+            "urlLength" : 100
+         }
+      ],
+      "graphql-profiles" : [
+         {
+            "$action" : "delete",
+            "name" : "Default"
+         }
+      ],
+      "login-pages" : [
+         {
+            "accessValidation" : {
+               "cookieContains" : "",
+               "headerContains" : "",
+               "headerOmits" : "",
+               "parameterContains" : "",
+               "responseContains" : "Listing registrations",
+               "responseHttpStatus" : "200",
+               "responseOmits" : ""
+            },
+            "authenticationType" : "http-basic",
+            "url" : {
+               "method" : "*",
+               "name" : "/registrations",
+               "protocol" : "https",
+               "type" : "explicit"
+            }
+         }
+      ],
+      "name" : "security_registration",
+      "policy-builder" : {
+         "learningMode" : "disabled"
+      },
+      "protocolIndependent" : false,
+      "response-pages" : [
+         {
+            "responseActionType" : "custom",
+            "responseContent" : "<!DOCTYPE html>\n<html>\n    <head>\n        <title>Listing registrations</title>\n        <link rel=\"stylesheet\" href=\"/css/bootstrap.min.css\">\n        <link rel=\"stylesheet\" href=\"/css/styles.css\">\n    </head>\n    <body>\n        <div class=\"container listing-reg\">\n            <h1>My Amazing App</h1>\n            <table class=\"listing-table table-dark table-striped\"><tr>\n                <th>Name</th><th>Email</th></tr>\n                <tr><td>Traci Mante</td><td>traci-m@yahoo.com</td></tr>\n                <tr><td>Fabian Gottlieb</td><td>Fabian.Gottlieb45@gmail.com</td></tr>\n                <tr><td>Hans Dampf</td><td>hans@mail.de</td></tr>\n        </table>\n    </div>\n</body>\n</html>",
+            "responseHeader" : "HTTP/1.1 200 OK\r\nCache-Control: no-cache\r\nPragma: no-cache\r\nConnection: close",
+            "responsePageType" : "failed-login-honeypot"
+         }
+      ],
+      "server-technologies" : [
+         {
+            "serverTechnologyName" : "Express.js"
+         },
+         {
+            "serverTechnologyName" : "MongoDB"
+         },
+         {
+            "serverTechnologyName" : "Node.js"
+         },
+         {
+            "serverTechnologyName" : "Unix/Linux"
+         }
+      ],
+      "signature-sets" : [
+         {
+            "alarm" : true,
+            "block" : true,
+            "learn" : true,
+            "name" : "Unix/Linux Signatures (High/Medium Accuracy)",
+            "signatureSet" : {
+               "filter" : {
+                  "accuracyFilter" : "ge",
+                  "accuracyValue" : "medium",
+                  "hasCve" : "all",
+                  "lastUpdatedFilter" : "all",
+                  "riskFilter" : "all",
+                  "riskValue" : "all",
+                  "signatureType" : "all",
+                  "tagFilter" : "all",
+                  "tagValue" : "",
+                  "userDefinedFilter" : "all"
+               },
+               "systems" : [
+                  {
+                     "name" : "Unix/Linux"
+                  }
+               ],
+               "type" : "filter-based"
+            }
+         },
+         {
+            "alarm" : true,
+            "block" : true,
+            "learn" : true,
+            "name" : "Node.js Signatures (High/Medium Accuracy)",
+            "signatureSet" : {
+               "filter" : {
+                  "accuracyFilter" : "ge",
+                  "accuracyValue" : "medium",
+                  "hasCve" : "all",
+                  "lastUpdatedFilter" : "all",
+                  "riskFilter" : "all",
+                  "riskValue" : "all",
+                  "signatureType" : "all",
+                  "tagFilter" : "all",
+                  "tagValue" : "",
+                  "userDefinedFilter" : "all"
+               },
+               "systems" : [
+                  {
+                     "name" : "Node.js"
+                  }
+               ],
+               "type" : "filter-based"
+            }
+         },
+         {
+            "alarm" : true,
+            "block" : true,
+            "learn" : true,
+            "name" : "MongoDB Signatures (High/Medium Accuracy)",
+            "signatureSet" : {
+               "filter" : {
+                  "accuracyFilter" : "ge",
+                  "accuracyValue" : "medium",
+                  "hasCve" : "all",
+                  "lastUpdatedFilter" : "all",
+                  "riskFilter" : "all",
+                  "riskValue" : "all",
+                  "signatureType" : "all",
+                  "tagFilter" : "all",
+                  "tagValue" : "",
+                  "userDefinedFilter" : "all"
+               },
+               "systems" : [
+                  {
+                     "name" : "MongoDB"
+                  }
+               ],
+               "type" : "filter-based"
+            }
+         }
+      ],
+      "signature-settings" : {
+         "signatureStaging" : false
+      },
+      "softwareVersion" : "16.1.0",
+      "template" : {
+         "name" : "POLICY_TEMPLATE_RAPID_DEPLOYMENT"
+      },
+      "type" : "security",
+      "urls" : [
+         {
+            "attackSignaturesCheck" : true,
+            "clickjackingProtection" : false,
+            "description" : "",
+            "disallowFileUploadOfExecutables" : false,
+            "html5CrossOriginRequestsEnforcement" : {
+               "enforcementMode" : "disabled"
+            },
+            "isAllowed" : true,
+            "mandatoryBody" : false,
+            "method" : "*",
+            "methodsOverrideOnUrlCheck" : false,
+            "name" : "/registrations",
+            "performStaging" : true,
+            "protocol" : "https",
+            "type" : "explicit",
+            "urlContentProfiles" : [
+               {
+                  "headerName" : "*",
+                  "headerOrder" : "default",
+                  "headerValue" : "*",
+                  "type" : "apply-value-and-content-signatures"
+               },
+               {
+                  "headerName" : "Content-Type",
+                  "headerOrder" : "1",
+                  "headerValue" : "*form*",
+                  "type" : "form-data"
+               },
+               {
+                  "contentProfile" : {
+                     "name" : "Default"
+                  },
+                  "headerName" : "Content-Type",
+                  "headerOrder" : "2",
+                  "headerValue" : "*json*",
+                  "type" : "json"
+               },
+               {
+                  "contentProfile" : {
+                     "name" : "Default"
+                  },
+                  "headerName" : "Content-Type",
+                  "headerOrder" : "3",
+                  "headerValue" : "*xml*",
+                  "type" : "xml"
+               }
+            ]
+         }
+      ]
+   }
+}
