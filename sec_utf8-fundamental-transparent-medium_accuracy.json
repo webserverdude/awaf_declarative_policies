@@ -38,7 +38,7 @@
          ]
       },
       "caseInsensitive" : false,
-      "description" : "Copied from /Common/sec_utf8-fundamental-transparent-high_accuracy",
+      "description" : "Fundamental Policy",
       "enablePassiveMode" : false,
       "enforcementMode" : "transparent",
       "fullPath" : "/Common/sec_utf8-fundamental-transparent-medium_accuracy",
