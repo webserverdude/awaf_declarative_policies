@@ -1,0 +1,72 @@
+{
+   "policy" : {
+      "applicationLanguage" : "utf-8",
+      "blocking-settings" : {
+         "http-protocols" : [
+            {
+               "description" : "POST request with Content-Length: 0",
+               "enabled" : true
+            },
+            {
+               "description" : "Multiple host headers",
+               "enabled" : true
+            },
+            {
+               "description" : "Header name with no header value",
+               "enabled" : true
+            },
+            {
+               "description" : "Host header contains IP address",
+               "enabled" : true
+            },
+            {
+               "description" : "Bad host header value",
+               "enabled" : true
+            },
+            {
+               "description" : "Content length should be a positive number",
+               "enabled" : true
+            },
+            {
+               "description" : "No Host header in HTTP/1.1 request",
+               "enabled" : true
+            },
+            {
+               "description" : "Body in GET or HEAD requests",
+               "enabled" : true
+            }
+         ]
+      },
+      "caseInsensitive" : false,
+      "description" : "Fundamental Policy",
+      "enablePassiveMode" : false,
+      "enforcementMode" : "transparent",
+      "fullPath" : "/Common/sec_utf8-fundamental-transparent-high_accuracy",
+      "name" : "sec_utf8-fundamental-transparent-high_accuracy",
+      "policy-builder" : {
+         "learningMode" : "disabled"
+      },
+      "protocolIndependent" : false,
+      "signature-sets" : [
+         {
+            "alarm" : true,
+            "block" : true,
+            "learn" : true,
+            "name" : "Generic Detection Signatures (High Accuracy)"
+         },
+         {
+            "$action" : "delete",
+            "name" : "Generic Detection Signatures (High/Medium Accuracy)"
+         }
+      ],
+      "signature-settings" : {
+         "minimumAccuracyForAutoAddedSignatures" : "high",
+         "signatureStaging" : false
+      },
+      "softwareVersion" : "16.1.3",
+      "template" : {
+         "name" : "POLICY_TEMPLATE_FUNDAMENTAL"
+      },
+      "type" : "security"
+   }
+}
